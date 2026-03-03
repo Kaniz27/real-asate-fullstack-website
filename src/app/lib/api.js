@@ -6,16 +6,20 @@ const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 // ✅ Public API (no credentials, no token)
 export const publicApi = axios.create({
   baseURL: BASE_URL,
-  headers: { "Content-Type": "application/json" },
+  headers: {
+    "Content-Type": "application/json",
     "ngrok-skip-browser-warning": "true",
+  },
   withCredentials: false,
 });
 
 // ✅ Admin API (credentials allowed; token will be attached dynamically)
 export const adminApi = axios.create({
   baseURL: BASE_URL,
-  headers: { "Content-Type": "application/json" },
+  headers: {
+    "Content-Type": "application/json",
     "ngrok-skip-browser-warning": "true",
+  },
   withCredentials: true, // ✅ admin only
 });
 

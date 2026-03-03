@@ -1,0 +1,1007 @@
+{
+  "info": {
+    "_postman_id": "77509c69-058d-4b1d-ac74-472f8e962838",
+    "name": "Real Eastate BackEnd",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "42535200"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Sign Up",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json", "type": "text" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"fullName\": \"Ahmed Hassan\",\n    \"email\": \"ahmed@example.com\",\n    \"phone\": \"+971501234570\",\n    \"password\": \"SecurePass123\",\n    \"confirmPassword\": \"SecurePass123\",\n    \"acceptTerms\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseURL}}/auth/signup",
+              "host": ["{{baseURL}}"],
+              "path": ["auth", "signup"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.environment.set('authToken', jsonData.token);",
+                  "    console.log('Token saved successfully');",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json", "type": "text" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"admin@realestate.com\",\n    \"password\": \"admin123\",\n    \"rememberMe\": false\n}"
+            },
+            "url": {
+              "raw": "{{baseURL}}/auth/login",
+              "host": ["{{baseURL}}"],
+              "path": ["auth", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Current User",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{authToken}}", "type": "text" }
+            ],
+            "url": {
+              "raw": "{{baseURL}}/auth/me",
+              "host": ["{{baseURL}}"],
+              "path": ["auth", "me"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Public API",
+      "item": [
+        {
+          "name": "Get Hero Data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/hero",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "hero"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Locations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/properties/locations",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "properties",
+                "locations"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Property Types",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/properties/property-types",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "properties",
+                "property-types"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Properties",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/properties/search?location=1&status=Ready",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "properties",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "location",
+                  "value": "1"
+                },
+                {
+                  "key": "property_type",
+                  "value": null,
+                  "disabled": true
+                },
+                {
+                  "key": "min_price",
+                  "value": null,
+                  "disabled": true
+                },
+                {
+                  "key": "max_price",
+                  "value": null,
+                  "disabled": true
+                },
+                {
+                  "key": "status",
+                  "value": "Ready"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Featured Properties",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/properties/featured",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "properties",
+                "featured"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Why Choose Us",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/content/why-choose-us",
+              "host": ["{{baseURL}}"],
+              "path": ["content", "why-choose-us"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Testimonials (Approved)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/content/testimonials",
+              "host": ["{{baseURL}}"],
+              "path": ["content", "testimonials"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Testimonials",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/content/testimonials/all",
+              "host": ["{{baseURL}}"],
+              "path": ["content", "testimonials", "all"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Call Now Setting",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/content/settings/call-now",
+              "host": ["{{baseURL}}"],
+              "path": ["content", "settings", "call-now"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Images List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/images",
+              "host": ["{{baseURL}}"],
+              "path": ["images"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Admin API",
+      "item": [
+        {
+          "name": "Hero",
+          "item": [
+            {
+              "name": "Update Hero Text",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  { "key": "Authorization", "value": "Bearer {{authToken}}", "type": "text" },
+                  { "key": "Content-Type", "value": "application/json", "type": "text" }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"headline\": \"Find Your Dream Home\",\n    \"subheadline\": \"Luxury properties in prime locations.\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseURL}}/admin/hero/text",
+                  "host": ["{{baseURL}}"],
+                  "path": ["admin", "hero", "text"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Add Hero Image",
+              "request": {
+                "method": "POST",
+                "header": [
+                  { "key": "Authorization", "value": "Bearer {{authToken}}", "type": "text" },
+                  { "key": "Content-Type", "value": "application/json", "type": "text" }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"url\": \"https://images.unsplash.com/photo-1564013799919-ab600027ffc6\",\n    \"alt\": \"Modern villa with pool\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseURL}}/admin/hero/images",
+                  "host": ["{{baseURL}}"],
+                  "path": ["admin", "hero", "images"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Hero Image",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  { "key": "Authorization", "value": "Bearer {{authToken}}", "type": "text" }
+                ],
+                "url": {
+                  "raw": "{{baseURL}}/admin/hero/images/1",
+                  "host": ["{{baseURL}}"],
+                  "path": ["admin", "hero", "images", "1"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Hero Button",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  { "key": "Authorization", "value": "Bearer {{authToken}}", "type": "text" },
+                  { "key": "Content-Type", "value": "application/json", "type": "text" }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"label\": \"View Properties\",\n    \"action\": \"/properties\",\n    \"is_enabled\": true\n}"
+                },
+                "url": {
+                  "raw": "{{baseURL}}/admin/hero/buttons/view-properties",
+                  "host": ["{{baseURL}}"],
+                  "path": ["admin", "hero", "buttons", "view-properties"]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Locations",
+          "item": [
+            {
+              "name": "Add Location",
+              "request": {
+                "method": "POST",
+                "header": [
+                  { "key": "Authorization", "value": "Bearer {{authToken}}", "type": "text" },
+                  { "key": "Content-Type", "value": "application/json", "type": "text" }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"Ajman\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseURL}}/admin/locations",
+                  "host": ["{{baseURL}}"],
+                  "path": ["admin", "locations"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Location",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  { "key": "Authorization", "value": "Bearer {{authToken}}", "type": "text" }
+                ],
+                "url": {
+                  "raw": "{{baseURL}}/admin/locations/1",
+                  "host": ["{{baseURL}}"],
+                  "path": ["admin", "locations", "1"]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Property Types",
+          "item": [
+            {
+              "name": "Add Property Type",
+              "request": {
+                "method": "POST",
+                "header": [
+                  { "key": "Authorization", "value": "Bearer {{authToken}}", "type": "text" },
+                  { "key": "Content-Type", "value": "application/json", "type": "text" }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"Townhouse\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseURL}}/admin/property-types",
+                  "host": ["{{baseURL}}"],
+                  "path": ["admin", "property-types"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Property Type",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  { "key": "Authorization", "value": "Bearer {{authToken}}", "type": "text" }
+                ],
+                "url": {
+                  "raw": "{{baseURL}}/admin/property-types/1",
+                  "host": ["{{baseURL}}"],
+                  "path": ["admin", "property-types", "1"]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Properties",
+          "item": [
+            {
+              "name": "Add Property",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"title\": \"New Luxury Condo\",\n    \"description\": \"A brand new condo in the city center.\",\n    \"location_id\": 1,\n    \"property_type_id\": 1,\n    \"price\": 800000.00,\n    \"status\": \"Ready\",\n    \"image_url\": \"https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500\",\n    \"is_featured\": true,\n    \"featured_order\": 5\n}"
+                },
+                "url": {
+                  "raw": "{{baseURL}}/admin/properties",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "properties"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Property",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"title\": \"Updated Luxury Condo\",\n    \"description\": \"An updated condo in the city center.\",\n    \"location_id\": 1,\n    \"property_type_id\": 1,\n    \"price\": 850000.00,\n    \"status\": \"Completed\",\n    \"image_url\": \"https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500\",\n    \"is_featured\": false,\n    \"featured_order\": 0\n}"
+                },
+                "url": {
+                  "raw": "{{baseURL}}/admin/properties/5",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "properties",
+                    "5"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Property",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}/admin/properties/5",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "properties",
+                    "5"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Featured Property",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"is_featured\": true,\n    \"featured_order\": 1\n}"
+                },
+                "url": {
+                  "raw": "{{baseURL}}/admin/properties/1/featured",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "properties",
+                    "1",
+                    "featured"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Settings",
+          "item": [
+            {
+              "name": "Update Featured Properties Visibility",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"visible\": false\n}"
+                },
+                "url": {
+                  "raw": "{{baseURL}}/admin/settings/featured-properties",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "settings",
+                    "featured-properties"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Call Now Settings",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"enabled\": true,\n    \"phoneNumber\": \"+971500000000\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseURL}}/admin/settings/call-now",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "settings",
+                    "call-now"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Site Content",
+          "item": [
+            {
+              "name": "Why Choose Us",
+              "item": [
+                {
+                  "name": "Add Why Choose Us Item",
+                  "request": {
+                    "method": "POST",
+                    "header": [{"key": "Content-Type", "value": "application/json", "type": "text"}],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"icon\": \"fa-shield\",\n    \"title\": \"Secure Payments\",\n    \"description\": \"Your money is safe with us.\",\n    \"display_order\": 4\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseURL}}/content/why-choose-us",
+                      "host": ["{{baseURL}}"],
+                      "path": ["content", "why-choose-us"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update Why Choose Us Item",
+                  "request": {
+                    "method": "PUT",
+                    "header": [{"key": "Content-Type", "value": "application/json", "type": "text"}],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"icon\": \"fa-lock\",\n    \"title\": \"Enhanced Security\",\n    \"description\": \"Updated description.\",\n    \"display_order\": 1\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseURL}}/content/why-choose-us/1",
+                      "host": ["{{baseURL}}"],
+                      "path": ["content", "why-choose-us", "1"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Delete Why Choose Us Item",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseURL}}/content/why-choose-us/1",
+                      "host": ["{{baseURL}}"],
+                      "path": ["content", "why-choose-us", "1"]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Testimonials",
+              "item": [
+                {
+                  "name": "Add Testimonial",
+                  "request": {
+                    "method": "POST",
+                    "header": [{"key": "Content-Type", "value": "application/json", "type": "text"}],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"client_image_url\": \"https://randomuser.me/api/portraits/men/10.jpg\",\n    \"client_name\": \"Bob Williams\",\n    \"rating\": 5,\n    \"comment\": \"Absolutely wonderful experience!\",\n    \"is_approved\": true\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseURL}}/content/testimonials",
+                      "host": ["{{baseURL}}"],
+                      "path": ["content", "testimonials"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update Testimonial",
+                  "request": {
+                    "method": "PUT",
+                    "header": [{"key": "Content-Type", "value": "application/json", "type": "text"}],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"client_image_url\": \"https://randomuser.me/api/portraits/men/10.jpg\",\n    \"client_name\": \"Bob Williams\",\n    \"rating\": 4,\n    \"comment\": \"Updated comment.\",\n    \"is_approved\": true\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseURL}}/content/testimonials/1",
+                      "host": ["{{baseURL}}"],
+                      "path": ["content", "testimonials", "1"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Approve / Hide Testimonial",
+                  "request": {
+                    "method": "PATCH",
+                    "header": [{"key": "Content-Type", "value": "application/json", "type": "text"}],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"is_approved\": false\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseURL}}/content/testimonials/1/approve",
+                      "host": ["{{baseURL}}"],
+                      "path": ["content", "testimonials", "1", "approve"]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Delete Testimonial",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseURL}}/content/testimonials/1",
+                      "host": ["{{baseURL}}"],
+                      "path": ["content", "testimonials", "1"]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Settings",
+              "item": [
+                {
+                  "name": "Update Call Now Setting",
+                  "request": {
+                    "method": "PUT",
+                    "header": [{"key": "Content-Type", "value": "application/json", "type": "text"}],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"enabled\": true,\n    \"phoneNumber\": \"+971500000000\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseURL}}/content/settings/call-now",
+                      "host": ["{{baseURL}}"],
+                      "path": ["content", "settings", "call-now"]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Why Choose Us",
+          "item": [
+            {
+              "name": "Add Feature",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"icon\": \"fa-shield\",\n    \"title\": \"Secure Payments\",\n    \"description\": \"Your money is safe with us.\",\n    \"display_order\": 4\n}"
+                },
+                "url": {
+                  "raw": "{{baseURL}}/admin/content/why-choose-us",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "content",
+                    "why-choose-us"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Edit Feature (Icon, Title, Desc, Order)",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"icon\": \"fa-lock\",\n    \"title\": \"Enhanced Security\",\n    \"description\": \"Updated description.\",\n    \"display_order\": 1\n}"
+                },
+                "url": {
+                  "raw": "{{baseURL}}/admin/content/why-choose-us/1",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "content",
+                    "why-choose-us",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Remove Feature",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}/admin/content/why-choose-us/1",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "content",
+                    "why-choose-us",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Testimonials",
+          "item": [
+            {
+              "name": "Add Testimonial",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"client_image_url\": \"https://randomuser.me/api/portraits/men/10.jpg\",\n    \"client_name\": \"Bob Williams\",\n    \"rating\": 5,\n    \"comment\": \"Absolutely wonderful experience!\",\n    \"is_approved\": true\n}"
+                },
+                "url": {
+                  "raw": "{{baseURL}}/admin/content/testimonials",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "content",
+                    "testimonials"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Edit Testimonial",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"client_image_url\": \"https://randomuser.me/api/portraits/men/10.jpg\",\n    \"client_name\": \"Bob Williams\",\n    \"rating\": 4,\n    \"comment\": \"Updated comment.\",\n    \"is_approved\": true\n}"
+                },
+                "url": {
+                  "raw": "{{baseURL}}/admin/content/testimonials/1",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "content",
+                    "testimonials",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Approve / Hide Review",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"is_approved\": false\n}"
+                },
+                "url": {
+                  "raw": "{{baseURL}}/admin/content/testimonials/1/approve",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "content",
+                    "testimonials",
+                    "1",
+                    "approve"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Testimonial",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}/admin/content/testimonials/1",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "content",
+                    "testimonials",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Images",
+          "item": [
+            {
+              "name": "Upload Image",
+              "request": {
+                "method": "POST",
+                "header": [
+                  { "key": "Authorization", "value": "Bearer {{authToken}}", "type": "text" }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "image",
+                      "type": "file",
+                      "src": []
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseURL}}/images/upload",
+                  "host": ["{{baseURL}}"],
+                  "path": ["images", "upload"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Image",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  { "key": "Authorization", "value": "Bearer {{authToken}}", "type": "text" }
+                ],
+                "url": {
+                  "raw": "{{baseURL}}/images/your-image-filename.jpg",
+                  "host": ["{{baseURL}}"],
+                  "path": ["images", "your-image-filename.jpg"]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseURL",
+      "value": "https://walrus-healthy-cobra.ngrok-free.app/api"
+    },
+    {
+      "key": "authToken",
+      "value": ""
+    }
+  ]
+}

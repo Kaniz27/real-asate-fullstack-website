@@ -3,12 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useSiteSettings } from "../lib/useSiteSettings";
 import useApi from "../hooks/useApi";
 
 export default function Hero() {
   const { publicGet, data, loading, error } = useApi();
-  const { settings, hydrated } = useSiteSettings();
 
   // ✅ prevent multiple fetch (if publicGet reference changes)
   const fetchedRef = useRef(false);
@@ -19,11 +17,8 @@ export default function Hero() {
     publicGet("/hero");
   }, [publicGet]);
 
-  // ✅ hero may be null before hydration; keep hooks consistent
-  const hero = hydrated ? settings?.hero : null;
+  const images = useMemo(() => data?.backgrounds?.map((bg) => bg.url) ?? [], [data?.backgrounds]);
 
-  // ✅ ALWAYS call hooks (no early return before this)
-  const images = useMemo(() => hero?.images ?? [], [hero?.images]);
   const [idx, setIdx] = useState(0);
 
   // keep idx valid when images change
@@ -33,25 +28,21 @@ export default function Hero() {
 
   // slider
   useEffect(() => {
-    if (!hero?.enabled || images.length <= 1) return;
+    if (images.length <= 1) return;
 
-    const interval = Number(hero?.sliderIntervalMs) || 4000;
+    const interval = Number(data?.sliderIntervalMs) || 4000;
 
     const t = setInterval(() => {
       setIdx((v) => (v + 1) % images.length);
     }, interval);
 
     return () => clearInterval(t);
-  }, [hero?.enabled, hero?.sliderIntervalMs, images.length]);
+  }, [data?.sliderIntervalMs, images.length]);
 
   const current = images.length ? images[idx] : null;
 
-  const headline = data?.headline ?? hero?.headline ?? hero?.title ?? "";
-  const subtitle = data?.subtitle ?? hero?.subtitle ?? "";
-
-  // ✅ NOW it's safe to conditionally return (after all hooks)
-  if (!hydrated) return null;
-  if (!hero?.enabled) return null;
+  const headline = data?.headline ?? "";
+  const subtitle = data?.subheadline ?? data?.subtitle ?? "";
 
   return (
     <section className="relative">
@@ -91,23 +82,23 @@ export default function Hero() {
               ) : null}
 
               <div className="mt-7 flex flex-wrap gap-3">
-                {hero?.buttons?.viewProperties?.enabled && (
-                  <Link
-                    href={hero.buttons.viewProperties.href}
-                    className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-white/90"
-                  >
-                    {hero.buttons.viewProperties.label}
-                  </Link>
-                )}
-
-                {hero?.buttons?.contactNow?.enabled && (
-                  <Link
-                    href={hero.buttons.contactNow.href}
-                    className="rounded-xl border border-white/60 bg-transparent px-5 py-3 text-sm font-semibold text-white hover:bg-white/10"
-                  >
-                    {hero.buttons.contactNow.label}
-                  </Link>
-                )}
+                {/* ✅ Dynamic buttons from API */}
+                {data?.ctaButtons?.length > 0
+                  ? data.ctaButtons
+                    .filter((btn) => btn.is_enabled !== false)
+                    .map((btn) => (
+                      <Link
+                        key={btn.id}
+                        href={btn.action}
+                        className={`rounded-xl px-5 py-3 text-sm font-semibold ${btn.variant === "primary"
+                          ? "bg-white text-slate-900 hover:bg-white/90"
+                          : "border border-white/60 bg-transparent text-white hover:bg-white/10"
+                          }`}
+                      >
+                        {btn.label}
+                      </Link>
+                    ))
+                  : null}
               </div>
 
               {images.length > 1 && (
@@ -117,9 +108,8 @@ export default function Hero() {
                       key={i}
                       type="button"
                       onClick={() => setIdx(i)}
-                      className={`h-2.5 w-2.5 rounded-full ${
-                        i === idx ? "bg-white" : "bg-white/40"
-                      }`}
+                      className={`h-2.5 w-2.5 rounded-full ${i === idx ? "bg-white" : "bg-white/40"
+                        }`}
                       aria-label={`Go to slide ${i + 1}`}
                     />
                   ))}
