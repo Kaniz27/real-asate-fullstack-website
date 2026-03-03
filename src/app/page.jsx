@@ -11,7 +11,6 @@ export default function HomePage() {
       <Homelayout>
         <Hero />
         <QuickSearch />
-
         <WhyChooseUs />
         <TestimonialsSlider />
       </Homelayout>

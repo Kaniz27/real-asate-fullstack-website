@@ -1,6 +1,6 @@
 {
   "info": {
-    "_postman_id": "77509c69-058d-4b1d-ac74-472f8e962838",
+    "_postman_id": "422fd653-37c4-4835-9176-abab122fa924",
     "name": "Real Eastate BackEnd",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "42535200"
@@ -14,7 +14,11 @@
           "request": {
             "method": "POST",
             "header": [
-              { "key": "Content-Type", "value": "application/json", "type": "text" }
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
             ],
             "body": {
               "mode": "raw",
@@ -22,8 +26,13 @@
             },
             "url": {
               "raw": "{{baseURL}}/auth/signup",
-              "host": ["{{baseURL}}"],
-              "path": ["auth", "signup"]
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "auth",
+                "signup"
+              ]
             }
           },
           "response": []
@@ -40,14 +49,19 @@
                   "    pm.environment.set('authToken', jsonData.token);",
                   "    console.log('Token saved successfully');",
                   "}"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
           "request": {
             "method": "POST",
             "header": [
-              { "key": "Content-Type", "value": "application/json", "type": "text" }
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
             ],
             "body": {
               "mode": "raw",
@@ -55,8 +69,13 @@
             },
             "url": {
               "raw": "{{baseURL}}/auth/login",
-              "host": ["{{baseURL}}"],
-              "path": ["auth", "login"]
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
             }
           },
           "response": []
@@ -66,12 +85,21 @@
           "request": {
             "method": "GET",
             "header": [
-              { "key": "Authorization", "value": "Bearer {{authToken}}", "type": "text" }
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
             ],
             "url": {
               "raw": "{{baseURL}}/auth/me",
-              "host": ["{{baseURL}}"],
-              "path": ["auth", "me"]
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ]
             }
           },
           "response": []
@@ -202,8 +230,13 @@
             "header": [],
             "url": {
               "raw": "{{baseURL}}/content/why-choose-us",
-              "host": ["{{baseURL}}"],
-              "path": ["content", "why-choose-us"]
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "content",
+                "why-choose-us"
+              ]
             }
           },
           "response": []
@@ -215,8 +248,13 @@
             "header": [],
             "url": {
               "raw": "{{baseURL}}/content/testimonials",
-              "host": ["{{baseURL}}"],
-              "path": ["content", "testimonials"]
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "content",
+                "testimonials"
+              ]
             }
           },
           "response": []
@@ -228,8 +266,14 @@
             "header": [],
             "url": {
               "raw": "{{baseURL}}/content/testimonials/all",
-              "host": ["{{baseURL}}"],
-              "path": ["content", "testimonials", "all"]
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "content",
+                "testimonials",
+                "all"
+              ]
             }
           },
           "response": []
@@ -241,21 +285,14 @@
             "header": [],
             "url": {
               "raw": "{{baseURL}}/content/settings/call-now",
-              "host": ["{{baseURL}}"],
-              "path": ["content", "settings", "call-now"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get Images List",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseURL}}/images",
-              "host": ["{{baseURL}}"],
-              "path": ["images"]
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "content",
+                "settings",
+                "call-now"
+              ]
             }
           },
           "response": []
@@ -273,8 +310,16 @@
               "request": {
                 "method": "PUT",
                 "header": [
-                  { "key": "Authorization", "value": "Bearer {{authToken}}", "type": "text" },
-                  { "key": "Content-Type", "value": "application/json", "type": "text" }
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
                 ],
                 "body": {
                   "mode": "raw",
@@ -282,8 +327,14 @@
                 },
                 "url": {
                   "raw": "{{baseURL}}/admin/hero/text",
-                  "host": ["{{baseURL}}"],
-                  "path": ["admin", "hero", "text"]
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "hero",
+                    "text"
+                  ]
                 }
               },
               "response": []
@@ -293,8 +344,16 @@
               "request": {
                 "method": "POST",
                 "header": [
-                  { "key": "Authorization", "value": "Bearer {{authToken}}", "type": "text" },
-                  { "key": "Content-Type", "value": "application/json", "type": "text" }
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
                 ],
                 "body": {
                   "mode": "raw",
@@ -302,8 +361,14 @@
                 },
                 "url": {
                   "raw": "{{baseURL}}/admin/hero/images",
-                  "host": ["{{baseURL}}"],
-                  "path": ["admin", "hero", "images"]
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "hero",
+                    "images"
+                  ]
                 }
               },
               "response": []
@@ -313,12 +378,42 @@
               "request": {
                 "method": "DELETE",
                 "header": [
-                  { "key": "Authorization", "value": "Bearer {{authToken}}", "type": "text" }
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
                 ],
                 "url": {
                   "raw": "{{baseURL}}/admin/hero/images/1",
-                  "host": ["{{baseURL}}"],
-                  "path": ["admin", "hero", "images", "1"]
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "hero",
+                    "images",
+                    "1"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "",
+                      "type": "text",
+                      "disabled": true
+                    },
+                    {
+                      "key": "",
+                      "value": "",
+                      "type": "text",
+                      "disabled": true
+                    }
+                  ]
                 }
               },
               "response": []
@@ -328,8 +423,16 @@
               "request": {
                 "method": "PATCH",
                 "header": [
-                  { "key": "Authorization", "value": "Bearer {{authToken}}", "type": "text" },
-                  { "key": "Content-Type", "value": "application/json", "type": "text" }
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
                 ],
                 "body": {
                   "mode": "raw",
@@ -337,8 +440,29 @@
                 },
                 "url": {
                   "raw": "{{baseURL}}/admin/hero/buttons/view-properties",
-                  "host": ["{{baseURL}}"],
-                  "path": ["admin", "hero", "buttons", "view-properties"]
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "hero",
+                    "buttons",
+                    "view-properties"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "",
+                      "type": "text",
+                      "disabled": true
+                    },
+                    {
+                      "key": "",
+                      "value": "",
+                      "type": "text",
+                      "disabled": true
+                    }
+                  ]
                 }
               },
               "response": []
@@ -353,17 +477,30 @@
               "request": {
                 "method": "POST",
                 "header": [
-                  { "key": "Authorization", "value": "Bearer {{authToken}}", "type": "text" },
-                  { "key": "Content-Type", "value": "application/json", "type": "text" }
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"name\": \"Ajman\"\n}"
+                  "raw": "{\n    \"name\": \"Dhaka\"\n}"
                 },
                 "url": {
                   "raw": "{{baseURL}}/admin/locations",
-                  "host": ["{{baseURL}}"],
-                  "path": ["admin", "locations"]
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "locations"
+                  ]
                 }
               },
               "response": []
@@ -373,12 +510,27 @@
               "request": {
                 "method": "DELETE",
                 "header": [
-                  { "key": "Authorization", "value": "Bearer {{authToken}}", "type": "text" }
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
                 ],
                 "url": {
-                  "raw": "{{baseURL}}/admin/locations/1",
-                  "host": ["{{baseURL}}"],
-                  "path": ["admin", "locations", "1"]
+                  "raw": "{{baseURL}}/admin/locations/5",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "locations",
+                    "5"
+                  ]
                 }
               },
               "response": []
@@ -393,17 +545,38 @@
               "request": {
                 "method": "POST",
                 "header": [
-                  { "key": "Authorization", "value": "Bearer {{authToken}}", "type": "text" },
-                  { "key": "Content-Type", "value": "application/json", "type": "text" }
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"name\": \"Townhouse\"\n}"
+                  "raw": "{\n    \"name\": \"Myhouse\"\n}"
                 },
                 "url": {
                   "raw": "{{baseURL}}/admin/property-types",
-                  "host": ["{{baseURL}}"],
-                  "path": ["admin", "property-types"]
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "property-types"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "",
+                      "type": "text",
+                      "disabled": true
+                    }
+                  ]
                 }
               },
               "response": []
@@ -413,12 +586,41 @@
               "request": {
                 "method": "DELETE",
                 "header": [
-                  { "key": "Authorization", "value": "Bearer {{authToken}}", "type": "text" }
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
                 ],
                 "url": {
-                  "raw": "{{baseURL}}/admin/property-types/1",
-                  "host": ["{{baseURL}}"],
-                  "path": ["admin", "property-types", "1"]
+                  "raw": "{{baseURL}}/admin/property-types/4",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "property-types",
+                    "4"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "",
+                      "type": "text",
+                      "disabled": true
+                    },
+                    {
+                      "key": "",
+                      "value": "",
+                      "type": "text",
+                      "disabled": true
+                    }
+                  ]
                 }
               },
               "response": []
@@ -437,6 +639,11 @@
                     "key": "Content-Type",
                     "value": "application/json",
                     "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}",
+                    "type": "text"
                   }
                 ],
                 "body": {
@@ -451,6 +658,20 @@
                   "path": [
                     "admin",
                     "properties"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "",
+                      "type": "text",
+                      "disabled": true
+                    },
+                    {
+                      "key": "",
+                      "value": "",
+                      "type": "text",
+                      "disabled": true
+                    }
                   ]
                 }
               },
@@ -464,6 +685,11 @@
                   {
                     "key": "Content-Type",
                     "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}",
                     "type": "text"
                   }
                 ],
@@ -480,6 +706,20 @@
                     "admin",
                     "properties",
                     "5"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "",
+                      "type": "text",
+                      "disabled": true
+                    },
+                    {
+                      "key": "",
+                      "value": "",
+                      "type": "text",
+                      "disabled": true
+                    }
                   ]
                 }
               },
@@ -489,7 +729,18 @@
               "name": "Delete Property",
               "request": {
                 "method": "DELETE",
-                "header": [],
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
                 "url": {
                   "raw": "{{baseURL}}/admin/properties/5",
                   "host": [
@@ -499,6 +750,20 @@
                     "admin",
                     "properties",
                     "5"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "",
+                      "type": "text",
+                      "disabled": true
+                    },
+                    {
+                      "key": "",
+                      "value": "",
+                      "type": "text",
+                      "disabled": true
+                    }
                   ]
                 }
               },
@@ -512,6 +777,11 @@
                   {
                     "key": "Content-Type",
                     "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}",
                     "type": "text"
                   }
                 ],
@@ -529,6 +799,20 @@
                     "properties",
                     "1",
                     "featured"
+                  ],
+                  "query": [
+                    {
+                      "key": "",
+                      "value": "",
+                      "type": "text",
+                      "disabled": true
+                    },
+                    {
+                      "key": "",
+                      "value": "",
+                      "type": "text",
+                      "disabled": true
+                    }
                   ]
                 }
               },
@@ -547,6 +831,11 @@
                   {
                     "key": "Content-Type",
                     "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}",
                     "type": "text"
                   }
                 ],
@@ -576,6 +865,11 @@
                   {
                     "key": "Content-Type",
                     "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}",
                     "type": "text"
                   }
                 ],
@@ -609,15 +903,31 @@
                   "name": "Add Why Choose Us Item",
                   "request": {
                     "method": "POST",
-                    "header": [{"key": "Content-Type", "value": "application/json", "type": "text"}],
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{authToken}}",
+                        "type": "text"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\n    \"icon\": \"fa-shield\",\n    \"title\": \"Secure Payments\",\n    \"description\": \"Your money is safe with us.\",\n    \"display_order\": 4\n}"
                     },
                     "url": {
                       "raw": "{{baseURL}}/content/why-choose-us",
-                      "host": ["{{baseURL}}"],
-                      "path": ["content", "why-choose-us"]
+                      "host": [
+                        "{{baseURL}}"
+                      ],
+                      "path": [
+                        "content",
+                        "why-choose-us"
+                      ]
                     }
                   },
                   "response": []
@@ -626,15 +936,32 @@
                   "name": "Update Why Choose Us Item",
                   "request": {
                     "method": "PUT",
-                    "header": [{"key": "Content-Type", "value": "application/json", "type": "text"}],
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{authToken}}",
+                        "type": "text"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\n    \"icon\": \"fa-lock\",\n    \"title\": \"Enhanced Security\",\n    \"description\": \"Updated description.\",\n    \"display_order\": 1\n}"
                     },
                     "url": {
                       "raw": "{{baseURL}}/content/why-choose-us/1",
-                      "host": ["{{baseURL}}"],
-                      "path": ["content", "why-choose-us", "1"]
+                      "host": [
+                        "{{baseURL}}"
+                      ],
+                      "path": [
+                        "content",
+                        "why-choose-us",
+                        "1"
+                      ]
                     }
                   },
                   "response": []
@@ -643,11 +970,28 @@
                   "name": "Delete Why Choose Us Item",
                   "request": {
                     "method": "DELETE",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{authToken}}",
+                        "type": "text"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
                     "url": {
                       "raw": "{{baseURL}}/content/why-choose-us/1",
-                      "host": ["{{baseURL}}"],
-                      "path": ["content", "why-choose-us", "1"]
+                      "host": [
+                        "{{baseURL}}"
+                      ],
+                      "path": [
+                        "content",
+                        "why-choose-us",
+                        "1"
+                      ]
                     }
                   },
                   "response": []
@@ -661,15 +1005,31 @@
                   "name": "Add Testimonial",
                   "request": {
                     "method": "POST",
-                    "header": [{"key": "Content-Type", "value": "application/json", "type": "text"}],
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{authToken}}",
+                        "type": "text"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\n    \"client_image_url\": \"https://randomuser.me/api/portraits/men/10.jpg\",\n    \"client_name\": \"Bob Williams\",\n    \"rating\": 5,\n    \"comment\": \"Absolutely wonderful experience!\",\n    \"is_approved\": true\n}"
                     },
                     "url": {
                       "raw": "{{baseURL}}/content/testimonials",
-                      "host": ["{{baseURL}}"],
-                      "path": ["content", "testimonials"]
+                      "host": [
+                        "{{baseURL}}"
+                      ],
+                      "path": [
+                        "content",
+                        "testimonials"
+                      ]
                     }
                   },
                   "response": []
@@ -678,15 +1038,32 @@
                   "name": "Update Testimonial",
                   "request": {
                     "method": "PUT",
-                    "header": [{"key": "Content-Type", "value": "application/json", "type": "text"}],
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{authToken}}",
+                        "type": "text"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\n    \"client_image_url\": \"https://randomuser.me/api/portraits/men/10.jpg\",\n    \"client_name\": \"Bob Williams\",\n    \"rating\": 4,\n    \"comment\": \"Updated comment.\",\n    \"is_approved\": true\n}"
                     },
                     "url": {
                       "raw": "{{baseURL}}/content/testimonials/1",
-                      "host": ["{{baseURL}}"],
-                      "path": ["content", "testimonials", "1"]
+                      "host": [
+                        "{{baseURL}}"
+                      ],
+                      "path": [
+                        "content",
+                        "testimonials",
+                        "1"
+                      ]
                     }
                   },
                   "response": []
@@ -695,15 +1072,33 @@
                   "name": "Approve / Hide Testimonial",
                   "request": {
                     "method": "PATCH",
-                    "header": [{"key": "Content-Type", "value": "application/json", "type": "text"}],
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{authToken}}",
+                        "type": "text"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\n    \"is_approved\": false\n}"
                     },
                     "url": {
                       "raw": "{{baseURL}}/content/testimonials/1/approve",
-                      "host": ["{{baseURL}}"],
-                      "path": ["content", "testimonials", "1", "approve"]
+                      "host": [
+                        "{{baseURL}}"
+                      ],
+                      "path": [
+                        "content",
+                        "testimonials",
+                        "1",
+                        "approve"
+                      ]
                     }
                   },
                   "response": []
@@ -712,11 +1107,28 @@
                   "name": "Delete Testimonial",
                   "request": {
                     "method": "DELETE",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{authToken}}",
+                        "type": "text"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
                     "url": {
                       "raw": "{{baseURL}}/content/testimonials/1",
-                      "host": ["{{baseURL}}"],
-                      "path": ["content", "testimonials", "1"]
+                      "host": [
+                        "{{baseURL}}"
+                      ],
+                      "path": [
+                        "content",
+                        "testimonials",
+                        "1"
+                      ]
                     }
                   },
                   "response": []
@@ -730,15 +1142,32 @@
                   "name": "Update Call Now Setting",
                   "request": {
                     "method": "PUT",
-                    "header": [{"key": "Content-Type", "value": "application/json", "type": "text"}],
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{authToken}}",
+                        "type": "text"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\n    \"enabled\": true,\n    \"phoneNumber\": \"+971500000000\"\n}"
                     },
                     "url": {
                       "raw": "{{baseURL}}/content/settings/call-now",
-                      "host": ["{{baseURL}}"],
-                      "path": ["content", "settings", "call-now"]
+                      "host": [
+                        "{{baseURL}}"
+                      ],
+                      "path": [
+                        "content",
+                        "settings",
+                        "call-now"
+                      ]
                     }
                   },
                   "response": []
@@ -758,6 +1187,11 @@
                   {
                     "key": "Content-Type",
                     "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}",
                     "type": "text"
                   }
                 ],
@@ -788,6 +1222,11 @@
                     "key": "Content-Type",
                     "value": "application/json",
                     "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}",
+                    "type": "text"
                   }
                 ],
                 "body": {
@@ -813,7 +1252,18 @@
               "name": "Remove Feature",
               "request": {
                 "method": "DELETE",
-                "header": [],
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
                 "url": {
                   "raw": "{{baseURL}}/admin/content/why-choose-us/1",
                   "host": [
@@ -843,6 +1293,11 @@
                     "key": "Content-Type",
                     "value": "application/json",
                     "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}",
+                    "type": "text"
                   }
                 ],
                 "body": {
@@ -871,6 +1326,11 @@
                   {
                     "key": "Content-Type",
                     "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}",
                     "type": "text"
                   }
                 ],
@@ -902,6 +1362,11 @@
                     "key": "Content-Type",
                     "value": "application/json",
                     "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}",
+                    "type": "text"
                   }
                 ],
                 "body": {
@@ -928,7 +1393,18 @@
               "name": "Delete Testimonial",
               "request": {
                 "method": "DELETE",
-                "header": [],
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{authToken}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
                 "url": {
                   "raw": "{{baseURL}}/admin/content/testimonials/1",
                   "host": [
@@ -945,53 +1421,106 @@
               "response": []
             }
           ]
+        }
+      ]
+    },
+    {
+      "name": "Get Images",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/images",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "images"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Uploads Images",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{authToken}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "image",
+              "type": "file",
+              "uuid": "ae45c5c0-8bac-40e5-81bd-9d08b8d6d528",
+              "src": [
+                "/C:/Users/nsc/Desktop/Screenshot 2026-03-02 150602.png",
+                "/C:/Users/nsc/Desktop/ppppppp.png"
+              ]
+            }
+          ]
         },
-        {
-          "name": "Images",
-          "item": [
+        "url": {
+          "raw": "{{baseURL}}/images/upload",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "images",
+            "upload"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Remove Images",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{authToken}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURL}}/images/1772511228371-406023871.png",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "images",
+            "1772511228371-406023871.png"
+          ],
+          "query": [
             {
-              "name": "Upload Image",
-              "request": {
-                "method": "POST",
-                "header": [
-                  { "key": "Authorization", "value": "Bearer {{authToken}}", "type": "text" }
-                ],
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "key": "image",
-                      "type": "file",
-                      "src": []
-                    }
-                  ]
-                },
-                "url": {
-                  "raw": "{{baseURL}}/images/upload",
-                  "host": ["{{baseURL}}"],
-                  "path": ["images", "upload"]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "Delete Image",
-              "request": {
-                "method": "DELETE",
-                "header": [
-                  { "key": "Authorization", "value": "Bearer {{authToken}}", "type": "text" }
-                ],
-                "url": {
-                  "raw": "{{baseURL}}/images/your-image-filename.jpg",
-                  "host": ["{{baseURL}}"],
-                  "path": ["images", "your-image-filename.jpg"]
-                }
-              },
-              "response": []
+              "key": "",
+              "value": null,
+              "type": "text",
+              "disabled": true
             }
           ]
         }
-      ]
+      },
+      "response": []
     }
   ],
   "variable": [
