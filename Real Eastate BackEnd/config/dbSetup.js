@@ -132,72 +132,72 @@ const setupDatabase = async () => {
       )
     `);
 
-    // Seeding
-    console.log('Seeding data...');
+    // // Seeding
+    // console.log('Seeding data...');
     
-    // Admin User Seeding
-    const adminPassword = await bcryptjs.hash('admin123', 10);
-    const ownerPassword = await bcryptjs.hash('owner123', 10);
-    const userPassword = await bcryptjs.hash('user123', 10);
+    // // Admin User Seeding
+    // const adminPassword = await bcryptjs.hash('admin123', 10);
+    // const ownerPassword = await bcryptjs.hash('owner123', 10);
+    // const userPassword = await bcryptjs.hash('user123', 10);
 
-    await db.query('INSERT INTO users (full_name, email, phone, password, role) VALUES ?', [[
-      ['Admin User', 'admin@realestate.com', '+971501234567', adminPassword, 'admin'],
-      ['John Owner', 'owner@realestate.com', '+971501234568', ownerPassword, 'owner'],
-      ['Jane User', 'user@realestate.com', '+971501234569', userPassword, 'user']
-    ]]);
+    // await db.query('INSERT INTO users (full_name, email, phone, password, role) VALUES ?', [[
+    //   ['Admin User', 'admin@realestate.com', '+971501234567', adminPassword, 'admin'],
+    //   ['John Owner', 'owner@realestate.com', '+971501234568', ownerPassword, 'owner'],
+    //   ['Jane User', 'user@realestate.com', '+971501234569', userPassword, 'user']
+    // ]]);
 
-    console.log('Default Users Created:');
-    console.log('Admin - Email: admin@realestate.com, Password: admin123');
-    console.log('Owner - Email: owner@realestate.com, Password: owner123');
-    console.log('User - Email: user@realestate.com, Password: user123');
+    // console.log('Default Users Created:');
+    // console.log('Admin - Email: admin@realestate.com, Password: admin123');
+    // console.log('Owner - Email: owner@realestate.com, Password: owner123');
+    // console.log('User - Email: user@realestate.com, Password: user123');
 
-    // Hero Seeding
-    await db.query('INSERT INTO hero_settings (headline, subheadline) VALUES (?, ?)', [
-      "Find Your Perfect Dream Home",
-      "Experience luxury living with our curated list of exclusive properties in prime locations."
-    ]);
+    // // Hero Seeding
+    // await db.query('INSERT INTO hero_settings (headline, subheadline) VALUES (?, ?)', [
+    //   "Find Your Perfect Dream Home",
+    //   "Experience luxury living with our curated list of exclusive properties in prime locations."
+    // ]);
 
-    await db.query('INSERT INTO hero_backgrounds (type, url, alt) VALUES ?', [[
-      ['image', "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&q=80&w=1920", "Modern villa with pool"],
-      ['image', "https://images.unsplash.com/photo-1600585154340-be6199f7d009?auto=format&fit=crop&q=80&w=1920", "Luxury interior living room"],
-      ['image', "https://images.unsplash.com/photo-1600607687940-477a4a982998?auto=format&fit=crop&q=80&w=1920", "Aerial view of suburban housing"]
-    ]]);
+    // await db.query('INSERT INTO hero_backgrounds (type, url, alt) VALUES ?', [[
+    //   ['image', "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&q=80&w=1920", "Modern villa with pool"],
+    //   ['image', "https://images.unsplash.com/photo-1600585154340-be6199f7d009?auto=format&fit=crop&q=80&w=1920", "Luxury interior living room"],
+    //   ['image', "https://images.unsplash.com/photo-1600607687940-477a4a982998?auto=format&fit=crop&q=80&w=1920", "Aerial view of suburban housing"]
+    // ]]);
 
-    await db.query('INSERT INTO hero_cta_buttons (id, label, action, variant, is_enabled) VALUES ?', [[
-      ["view-properties", "View Properties", "/properties", "primary", 1],
-      ["contact-now", "Contact Now", "/contact", "secondary", 1]
-    ]]);
+    // await db.query('INSERT INTO hero_cta_buttons (id, label, action, variant, is_enabled) VALUES ?', [[
+    //   ["view-properties", "View Properties", "/properties", "primary", 1],
+    //   ["contact-now", "Contact Now", "/contact", "secondary", 1]
+    // ]]);
 
-    // Locations & Types
-    await db.query('INSERT INTO locations (name) VALUES ?', [[['Dubai'], ['Abu Dhabi'], ['Sharjah']]]);
-    await db.query('INSERT INTO property_types (name) VALUES ?', [[['Villa'], ['Apartment'], ['Penthouse']]]);
+    // // Locations & Types
+    // await db.query('INSERT INTO locations (name) VALUES ?', [[['Dubai'], ['Abu Dhabi'], ['Sharjah']]]);
+    // await db.query('INSERT INTO property_types (name) VALUES ?', [[['Villa'], ['Apartment'], ['Penthouse']]]);
 
-    // Properties
-    await db.query('INSERT INTO properties (title, description, location_id, property_type_id, price, status, image_url, is_featured, featured_order) VALUES ?', [[
-      ['Luxury Villa in Palm Jumeirah', 'Stunning 5-bedroom villa with private beach access.', 1, 1, 15000000.00, 'Ready', 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750', 1, 1],
-      ['Modern Apartment in Downtown', 'High-floor apartment with Burj Khalifa views.', 1, 2, 3500000.00, 'Ready', 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267', 1, 2]
-    ]]);
+    // // Properties
+    // await db.query('INSERT INTO properties (title, description, location_id, property_type_id, price, status, image_url, is_featured, featured_order) VALUES ?', [[
+    //   ['Luxury Villa in Palm Jumeirah', 'Stunning 5-bedroom villa with private beach access.', 1, 1, 15000000.00, 'Ready', 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750', 1, 1],
+    //   ['Modern Apartment in Downtown', 'High-floor apartment with Burj Khalifa views.', 1, 2, 3500000.00, 'Ready', 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267', 1, 2]
+    // ]]);
     
-    // Settings Seeding
-    await db.query('INSERT INTO settings (setting_key, setting_value) VALUES ?', [[
-        ['featured_properties_visible', '1'],
-        ['call_now_button_enabled', '1'],
-        ['call_now_button_phone_number', '+1234567890']
-    ]]);
+    // // Settings Seeding
+    // await db.query('INSERT INTO settings (setting_key, setting_value) VALUES ?', [[
+    //     ['featured_properties_visible', '1'],
+    //     ['call_now_button_enabled', '1'],
+    //     ['call_now_button_phone_number', '+1234567890']
+    // ]]);
 
-    // "Why Choose Us" Seeding
-    await db.query('INSERT INTO why_choose_us_items (icon, title, description, display_order) VALUES ?', [[
-        ['fa-home', 'Wide Range of Properties', 'We offer a diverse portfolio of properties to suit every need and budget.', 1],
-        ['fa-users', 'Expert Agents', 'Our experienced agents are here to guide you through every step of the process.', 2],
-        ['fa-tags', 'Best Price Guarantee', 'We ensure you get the best value for your investment with transparent pricing.', 3]
-    ]]);
+    // // "Why Choose Us" Seeding
+    // await db.query('INSERT INTO why_choose_us_items (icon, title, description, display_order) VALUES ?', [[
+    //     ['fa-home', 'Wide Range of Properties', 'We offer a diverse portfolio of properties to suit every need and budget.', 1],
+    //     ['fa-users', 'Expert Agents', 'Our experienced agents are here to guide you through every step of the process.', 2],
+    //     ['fa-tags', 'Best Price Guarantee', 'We ensure you get the best value for your investment with transparent pricing.', 3]
+    // ]]);
 
-    // Testimonials Seeding
-    await db.query('INSERT INTO testimonials (client_image_url, client_name, rating, comment, is_approved) VALUES ?', [[
-        ['https://randomuser.me/api/portraits/women/65.jpg', 'Jane Doe', 5, 'An amazing experience from start to finish. Highly recommended!', 1],
-        ['https://randomuser.me/api/portraits/men/32.jpg', 'John Smith', 4, 'Very professional and helpful team. They found us the perfect home.', 1],
-        ['https://randomuser.me/api/portraits/women/44.jpg', 'Emily Jones', 5, 'I could not be happier with my new apartment. The process was so smooth.', 0]
-    ]]);
+    // // Testimonials Seeding
+    // await db.query('INSERT INTO testimonials (client_image_url, client_name, rating, comment, is_approved) VALUES ?', [[
+    //     ['https://randomuser.me/api/portraits/women/65.jpg', 'Jane Doe', 5, 'An amazing experience from start to finish. Highly recommended!', 1],
+    //     ['https://randomuser.me/api/portraits/men/32.jpg', 'John Smith', 4, 'Very professional and helpful team. They found us the perfect home.', 1],
+    //     ['https://randomuser.me/api/portraits/women/44.jpg', 'Emily Jones', 5, 'I could not be happier with my new apartment. The process was so smooth.', 0]
+    // ]]);
 
     console.log('Database setup and seeding completed successfully.');
   } catch (error) {
